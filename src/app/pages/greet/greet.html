@@ -1,0 +1,50 @@
+<ion-content>
+    <div class="greet">
+        <div class="greet__slider">
+            <ion-slides pager="true" [options]="slideOpts">
+                <ion-slide>
+                    <div class="greet__slide">
+                        <div class="greet__icon">
+                            <span class="tp-icon">👉</span>
+                        </div>
+                        <h1 class="greet__title">Team Poke</h1>
+                        <p class="greet__text">В Team Poke можно оставлять анонимные отзывы коллегам и ставить им рейтинг</p>
+                    </div>
+                </ion-slide>
+                <ion-slide>
+                    <div class="greet__slide">
+                        <div class="greet__icon">
+                            <span class="tp-icon">💪</span>
+                        </div>
+                        <h1 class="greet__title">Развивай себя</h1>
+                        <p class="greet__text">Отзывы коллег подскажут что можно улучшить в себе</p>
+                    </div>
+                </ion-slide>
+                <ion-slide>
+                    <div class="greet__slide">
+                        <div class="greet__icon">
+                            <span class="tp-icon">💆‍♂️</span>
+                        </div>
+                        <h1 class="greet__title">Получай похвалу</h1>
+                        <p class="greet__text">Всегда приятно когда тебя ценят за хорошую работу</p>
+                    </div>
+                </ion-slide>
+                <ion-slide>
+                    <div class="greet__slide">
+                        <div class="greet__icon">
+                            <span class="tp-icon">👀</span>
+                        </div>
+                        <h1 class="greet__title">Формируй окружение</h1>
+                        <p class="greet__text">Со стороны всегда виднее что можно улучшить и за что похвалить. Тебе точно есть что сказать!</p>
+                    </div>
+                </ion-slide>
+            </ion-slides>
+        </div>
+
+        <div class="greet__footer">
+            <ion-button expand="block" color="warning" routerLink="/authorization/email">
+                <i class="tp-icon">🚀</i> Погнали!
+            </ion-button>
+        </div>
+    </div>
+</ion-content>

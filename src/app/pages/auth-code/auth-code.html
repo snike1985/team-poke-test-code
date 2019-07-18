@@ -1,0 +1,58 @@
+<ion-header mode="md">
+    <ion-toolbar color="tertiary">
+        <ion-buttons slot="start">
+            <ion-back-button class="custom-back-button" text="" icon=""></ion-back-button>
+        </ion-buttons>
+        <ion-title>Team <i class="tp-icon">👉</i> Poke</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+    <div class="authorization">
+
+        <div class="authorization__icon">
+            <span class="tp-icon">👀️</span>
+        </div>
+
+        <h1 class="authorization__title">Код входа из письма</h1>
+
+        <ion-input class="authorization__field"
+                   type="tel"
+                   name="code"
+                   placeholder="XXXX"
+                   maxlength="4"
+                   [formControl]="otpForm?.controls['otp']"></ion-input>
+
+        <div class="authorization__info">Код выслан на {{userEmail}}
+            <strong>в папку Spam</strong> <i class="tp-icon">🤷‍♂</i>️
+        </div>
+        <div class="authorization__timer" *ngIf="!isNewCode">{{ duration * 1000 | date:'mm:ss' }}</div>
+        <div class="authorization__new-code" *ngIf="isNewCode" (click)="getNewCode()">Отправить код еще раз</div>
+
+        <div class="loading-wrap" [class.show]="isLoad">
+            <div class="loading"></div>
+        </div>
+
+    </div>
+
+</ion-content>
+
+<ion-footer slot="md">
+
+    <div padding class="white-bg">
+
+        <ion-button expand="block" color="tertiary"
+                    type="submit"
+                    (click)="submitForm()"
+                    [disabled]="!otpForm.valid || isLoad">
+            Далее
+        </ion-button>
+
+    </div>
+
+</ion-footer>
+
+
+
+

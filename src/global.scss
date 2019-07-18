@@ -1,0 +1,87 @@
+// http://ionicframework.com/docs/theming/
+@import '~@ionic/angular/css/core.css';
+@import '~@ionic/angular/css/normalize.css';
+@import '~@ionic/angular/css/structure.css';
+@import '~@ionic/angular/css/typography.css';
+@import '~@ionic/angular/css/display.css';
+@import '~@ionic/angular/css/padding.css';
+@import '~@ionic/angular/css/float-elements.css';
+@import '~@ionic/angular/css/text-alignment.css';
+@import '~@ionic/angular/css/text-transformation.css';
+@import '~@ionic/angular/css/flex-utils.css';
+
+@import 'theme/variables';
+
+//Shared Styles
+@import 'assets/fonts/fonts';
+@import 'theme/main';
+
+//Reset
+h1, h2, h3, h4, h5 {
+  margin: 0;
+}
+
+*:focus {
+  outline: none !important;
+}
+
+p {
+  margin: 0;
+}
+
+body, html, ion-app,
+html.ios, html.md {
+  -webkit-overflow-scrolling: auto;
+  font-family: var(--ion-default-font);
+}
+
+ion-title {
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: -0.51px;
+  text-align: center;
+  color: #ffffff;
+}
+
+ion-button {
+  --background-focused: inherit;
+  --background-activated: inherit;
+  --color-activated: inherit;
+  --color-focused: inherit;
+  --border-radius: 28px;
+  --height: 56px;
+  height: 56px;
+  margin: 0;
+  --line-height: 56px;
+  --font-size: 18px;
+  font-weight: 700;
+  font-style: normal;
+  font-stretch: normal;
+  letter-spacing: -0.58px;
+  text-transform: none;
+
+  &.button-disabled {
+    --opacity: 1;
+    --ion-color-base: var(--ion-color-medium) !important;
+  }
+
+  .tp-icon {
+    display: block;
+    margin-right: 5px;
+  }
+}
+
+.header-md {
+  box-shadow: 0 8px 16px 0 rgba(0, 25, 68, 0.1);
+
+  &:after {
+    display: none;
+  }
+}
+
+.footer-md:before {
+  display: none;
+}

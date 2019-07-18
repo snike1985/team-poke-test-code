@@ -1,0 +1,67 @@
+<ion-content tpScrolledHeader [scrollEvents]="true" class="profile-page">
+
+    <tp-custom-refresher slot="fixed" (ionRefresh)="loadingContent($event)"></tp-custom-refresher>
+
+    <ion-header *ngIf="isLoaded && !loading && user" class="header-hidable" slot="fixed" mode="md">
+        <ion-toolbar>
+            <ion-title>{{user.firstName}} {{user.lastName}}</ion-title>
+            <ion-buttons slot="end">
+                <ion-button class="custom-exit-button" (click)="showLogOutAlert()"></ion-button>
+            </ion-buttons>
+        </ion-toolbar>
+    </ion-header>
+
+    <div class="loading-wrap show" *ngIf="loading" @VisibilityChanged>
+        <div class="loading"></div>
+    </div>
+
+    <div class="loading-error" *ngIf="!isLoaded && !loading">
+        <div class="loading-error__wrap">
+            <div class="tp-icon">🥴</div>
+            <h2 class="loading-error__title">Ошибка загрузки</h2>
+            <span class="loading-error__try" (click)="loadingContent()">Попробовать снова</span>
+        </div>
+    </div>
+
+    <div *ngIf="isLoaded && !loading && user" class="user">
+        <div class="user__top">
+            <div class="user__head">
+                <div class="ava ava_big" [style.background-image]="'url(' + user.avatarURL + ')'"></div>
+                <h1 class="user__name">{{user.firstName}} {{user.lastName}}</h1>
+                <div class="user__occupation">{{user.occupation}}</div>
+            </div>
+            <div class="user__rating">
+                <div class="rating">
+                    <div class="rating__count">{{user.rating ? user.rating : '?'}}</div>
+                    <div class="rating__wrap">
+                        <div class="rating__stars">
+                            <div class="rating__stars-value" [style.width]="100*user.rating/5 + '%'"></div>
+                        </div>
+                        <div *ngIf="user.numPokes" class="rating__info">{{user.numPokes}} {{user.numPokes > 1 ? 'pokes' : 'poke'}}</div>
+                        <div *ngIf="!user.numPokes" class="rating__info">нет pokes</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="user__pokes">
+            <div *ngIf="!pokesLoaded" class="loading"></div>
+            <div class="loading-error" *ngIf="pokesLoaded && !userPokes">
+                <div class="loading-error__wrap">
+                    <div class="tp-icon">🥴</div>
+                    <h2 class="loading-error__title">Ошибка загрузки</h2>
+                    <span class="loading-error__try" (click)="getPersonPokes()">Попробовать снова</span>
+                </div>
+            </div>
+            <div *ngIf="pokesLoaded">
+                <tp-user-pokes-component *ngIf="userPokes.length" [userPokesList]="userPokes"></tp-user-pokes-component>
+                <div *ngIf="!userPokes.length" class="write-me">
+                    <div class="write-me__wrap">
+                        <div class="tp-icon">👀</div>
+                        <h2 class="write-me__title">Ждем первый Poke</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</ion-content>

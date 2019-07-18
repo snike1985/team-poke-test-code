@@ -1,0 +1,82 @@
+<ion-header mode="md">
+    <ion-toolbar color="tertiary">
+        <ion-buttons slot="start">
+            <ion-button class="custom-close-button" (click)="closeModal()"></ion-button>
+        </ion-buttons>
+        <ion-title>Poke {{user.firstName}} {{user.lastName}}</ion-title>
+        <div slot="end">
+            <div class="ava ava_small" [style.background-image]="'url(' + user.avatarURL + ')'"></div>
+        </div>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <div class="loading-wrap" [class.show]="addingPoke">
+        <div class="loading"></div>
+    </div>
+
+    <form class="add-poke" [formGroup]="pokeForm" (ngSubmit)="addPoke()">
+
+        <div class="add-poke__bg" *ngIf="showEmojiList" (click)="toggleEmojiList()"></div>
+
+        <div class="add-poke__wrap">
+
+            <span class="mark">Анонимно</span>
+
+            <div class="rating">
+                <div class="rating__wrap">
+                    <div class="rating__stars">
+                        <div class="rating__stars-value" [style.width]="100*curPoke.rating/5 + '%'"></div>
+                        <div class="rating__buttons">
+                            <div class="rating__buttons-item" (click)="setRating(1)"></div>
+                            <div class="rating__buttons-item" (click)="setRating(2)"></div>
+                            <div class="rating__buttons-item" (click)="setRating(3)"></div>
+                            <div class="rating__buttons-item" (click)="setRating(4)"></div>
+                            <div class="rating__buttons-item" (click)="setRating(5)"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+                <tp-textarea maxHeight="110"
+                             placeholderText="Над чем стоит поработать или за что похвалить?"
+                             [control]="pokeForm?.controls['description']">
+                </tp-textarea>
+        </div>
+
+        <div class="add-poke__emoji">
+            <div class="add-poke__add-emoji" [class.empty]="!curPoke.emoji" (click)="toggleEmojiList()">
+                <span class="tp-icon" *ngIf="curPoke.emoji">{{curPoke.emoji}}</span>
+            </div>
+            <div *ngIf="!curPoke.emoji" @VisibilityChanged>выбери эмодзи</div>
+        </div>
+    </form>
+
+</ion-content>
+
+<ion-footer slot="md">
+    <div padding class="white-bg">
+
+        <ion-button type="submit"
+                    expand="block"
+                    color="tertiary"
+                    (click)="addPoke()"
+                    [disabled]="!pokeForm.valid">
+            Poke 👉 {{user.firstName}}
+        </ion-button>
+
+    </div>
+    <div class="custom-keyboard" [class.show]="showEmojiList">
+        <div class="tp-icon-list">
+            <div class="tp-icon-list__wrap">
+                <div class="tp-icon"
+                     *ngFor="let emoji of emojiArr"
+                     (click)="setPokeEmoji(emoji)">
+                    {{emoji}}
+                </div>
+            </div>
+        </div>
+    </div>
+</ion-footer>

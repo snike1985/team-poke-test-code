@@ -1,0 +1,10 @@
+<ion-refresher
+        slot="fixed"
+        (ionRefresh)="refresh($event)"
+        (ionPull)="pullRefresh($event)" pullMax="1">
+  <div class="loading"
+       [class.active]="scaleCount === 1"
+       [style.width]="scaleCount*40 + 'px'">
+    <span></span>
+  </div>
+</ion-refresher>

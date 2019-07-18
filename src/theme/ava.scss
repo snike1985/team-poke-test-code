@@ -1,0 +1,22 @@
+.ava {
+  display: block;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: {
+    position: center;
+    size: cover;
+    repeat: no-repeat;
+    color: #e7eef6;
+  };
+
+  &_small {
+    width: 32px;
+    height: 32px;
+  }
+
+  &_big {
+    width: 80px;
+    height: 80px;
+  }
+}

@@ -1,0 +1,36 @@
+// Noto Color Emoji
+@font-face {
+    font-family: 'NotoColorEmoji';
+    font-weight: 400;
+    font-style: normal;
+    src: local('NotoColorEmoji'), url('assets/fonts/NotoColorEmoji.ttf') format('opentype');
+}
+
+// SF Pro
+@font-face {
+    font-family: 'SFProText-Regular';
+    font-weight: 400;
+    font-style: normal;
+    src: local('SF-Pro-Text-Regular'), url('assets/fonts/SF-Pro-Text-Regular.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'SFProText-Bold';
+    font-weight: 400;
+    font-style: normal;
+    src: local('SF-Pro-Text-Bold'), url('assets/fonts/SF-Pro-Text-Bold.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'SFProText-Medium';
+    font-weight: 400;
+    font-style: normal;
+    src: local('SF-Pro-Text-Medium'), url('assets/fonts/SF-Pro-Text-Medium.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'SFProText-Semibold';
+    font-weight: 400;
+    font-style: normal;
+    src: local('SF-Pro-Text-Semibold'), url('assets/fonts/SF-Pro-Text-Semibold.otf') format('opentype');
+}

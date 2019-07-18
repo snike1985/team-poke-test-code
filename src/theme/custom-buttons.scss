@@ -1,0 +1,54 @@
+.custom-back-button {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translate(0, -50%);
+  width: 24px;
+  height: 24px;
+  background: {
+    image: url(/assets/icon/icon-back.svg);
+    repeat: no-repeat;
+    position: center;
+    size: contain;
+  };
+  opacity: .8;
+  transition: opacity $transition;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.custom-close-button {
+  width: 24px;
+  height: 24px;
+  background: {
+    image: url(/assets/icon/icon-close.svg);
+    repeat: no-repeat;
+    position: center;
+    size: contain;
+  };
+  opacity: .8;
+  transition: opacity $transition;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.custom-exit-button {
+  width: 24px;
+  height: 24px;
+  background: {
+    image: url(/assets/icon/icon-exit.svg);
+    repeat: no-repeat;
+    position: center;
+    size: contain;
+  };
+  opacity: .8;
+  transition: opacity $transition;
+
+  &:hover {
+    opacity: 1;
+  }
+}

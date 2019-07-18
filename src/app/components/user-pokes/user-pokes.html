@@ -1,0 +1,42 @@
+<div class="user-pokes">
+   <div *ngIf="userPokesList.length" class="user-pokes__head">{{userPokesList.length}} {{userPokesList.length > 1 ? 'pokes' : 'poke'}}</div>
+    <div *ngIf="!userPokesList.length" class="user-pokes__head">нет pokes</div>
+    <div class="user-pokes__list">
+        <div *ngFor="let poke of userPokesList"
+             class="user-pokes__list-item"
+             @VisibilityChanged>
+            <div class="user-pokes__wrap">
+                <div class="user-pokes__info">
+                    <div class="rating">
+                        <div class="rating__wrap">
+                            <div class="rating__stars">
+                                <div class="rating__stars-value" [style.width]="100*poke.rating/5 + '%'"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="user-pokes__voting-loader" *ngIf="poke.voting" @VisibilityChanged>
+                        <div class="user-pokes__voting-loader-spiner"></div>
+                    </div>
+                    <p class="user-pokes__description">{{poke.description}}</p>
+                </div>
+                <div class="user-pokes__emoji">
+                    <span class="tp-icon">{{poke.emoji}}</span>
+                </div>
+            </div>
+            <div class="user-pokes__footer">
+                <div class="user-pokes__vote"
+                     [class.empty]="!poke.votes"
+                     [class.disabled]="!poke.canVote"
+                     [class.voted]="poke.voted"
+                     [class.voting]="poke.voting"
+                     (click)="votePoke(poke)">
+                    <span *ngIf="poke.votes" class="user-pokes__vote-count">{{poke.votes}}</span>
+                </div>
+                <div>
+                    <div *ngIf="poke.canDelete" class="user-pokes__delete" (click)="confirmDeletePoke(poke.ID)">Удалить</div>
+                    <div class="user-pokes__time">{{poke.created * 1000 | date: 'd MMMM yyyy'}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

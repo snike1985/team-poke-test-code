@@ -1,0 +1,104 @@
+.user-preview {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  padding: 16px;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px 0 rgba(1, 18, 72, 0.07);
+  background-color: #ffffff;
+
+  &.top-rate {
+    background-color: #fffad1;
+
+    .user-preview__num-pokes {
+      display: none;
+    }
+
+    .user-preview__top-rate-icon {
+      display: block;
+      position: absolute;
+      top: -3px;
+      right: 0;
+      pointer-events: none;
+    }
+  }
+
+  &__left {
+    width: 56px;
+  }
+
+  &__right {
+    position: relative;
+    width: calc(100% - 72px);
+  }
+
+  &__head {
+    height: 44px;
+    width: calc(100% - 36px);
+    margin-bottom: 14px;
+  }
+
+  .ava {
+    margin-bottom: 12px;
+  }
+
+  &__title {
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin-bottom: 7px;
+    font-size: 18px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: -0.58px;
+    color: #424d63;
+  }
+
+  &__occupation {
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: 14px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: -0.51px;
+    color: transparentize(#424d63, .3);
+  }
+
+  &__num-pokes {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 12px;
+    font-size: 18px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: -0.58px;
+    text-align: center;
+    color: #dee6ed;
+  }
+
+  &__emoji {
+    text-align: center;
+
+    .tp-icon {
+      font-size: 28px;
+    }
+  }
+
+  &__top-rate-icon {
+    display: none;
+
+    .tp-icon {
+      font-size: 70px;
+    }
+  }
+}

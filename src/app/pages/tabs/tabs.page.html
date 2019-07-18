@@ -1,0 +1,15 @@
+<ion-tabs>
+
+    <div class="offline-alert" *ngIf="isOffline" @VisibilityChanged>Офлайн режим <span class="tp-icon">👌</span> Все под контролем!</div>
+
+    <ion-tab-bar slot="bottom">
+        <ion-tab-button tab="team">
+            <div class="tab-icon tab-icon_team"></div>
+        </ion-tab-button>
+
+        <ion-tab-button tab="profile">
+            <div class="tab-icon tab-icon_profile"></div>
+        </ion-tab-button>
+    </ion-tab-bar>
+
+</ion-tabs>

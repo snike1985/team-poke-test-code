@@ -1,0 +1,51 @@
+<ion-header mode="md">
+    <ion-toolbar color="tertiary">
+        <ion-title>Team <i class="tp-icon">👉</i> Poke</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+    <div class="authorization">
+
+        <div class="authorization__icon">
+            <span class="tp-icon">✉️</span>
+        </div>
+
+        <h1 class="authorization__title">Рабочая электронная почта</h1>
+
+        <ion-input class="authorization__field"
+                   type="email"
+                   name="email"
+                   placeholder="Рабочая электронная почта"
+                   [formControl]="loginForm?.controls['userEmail']"></ion-input>
+
+        <span class="authorization__info">Ты получишь письмо с кодом входа</span>
+
+        <div class="loading-wrap" [class.show]="isLoad">
+            <div class="loading"></div>
+        </div>
+
+    </div>
+
+</ion-content>
+
+<ion-footer slot="md">
+
+    <div padding class="white-bg">
+
+        <ion-button expand="block"
+                    color="tertiary"
+                    type="submit"
+                    (click)="submitForm()"
+                    [disabled]="!loginForm.valid || isLoad">
+            Далее
+        </ion-button>
+
+    </div>
+
+</ion-footer>
+
+
+
+

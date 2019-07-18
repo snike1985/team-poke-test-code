@@ -1,0 +1,9 @@
+<div class="custom-textarea" [class.in-focus]="control.value">
+
+        <textarea rows="1"
+                  (input)="resize($event)"
+                  [placeholder]="placeholderText"
+                  [formControl]="control">
+        </textarea>
+
+</div>

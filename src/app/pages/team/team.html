@@ -1,0 +1,79 @@
+<ion-content tpScrolledHeader [scrollEvents]="true" class="team-page">
+
+    <tp-custom-refresher slot="fixed" (ionRefresh)="loadingContent($event)"></tp-custom-refresher>
+
+    <ion-header class="header-hidable" slot="fixed" mode="md">
+        <ion-toolbar color="tertiary">
+            <ion-buttons slot="start">
+                <ion-back-button></ion-back-button>
+            </ion-buttons>
+            <ion-title>Рейтинг активности</ion-title>
+        </ion-toolbar>
+    </ion-header>
+
+    <div class="page-header team-page__header" [class.error-loading]="!isLoaded && !loading">
+        <div class="page-header__wrap">
+
+            <h1 class="page-header__title">Рейтинг активности</h1>
+
+            <div class="page-header__icon">
+                <div class="tp-icon">🤟</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="loading-wrap show" *ngIf="loading" @VisibilityChanged>
+        <div class="loading"></div>
+    </div>
+
+    <div class="loading-error" *ngIf="!isLoaded && !loading">
+        <div class="loading-error__wrap">
+            <div class="tp-icon">🥴</div>
+            <h2 class="loading-error__title">Ошибка загрузки</h2>
+            <span class="loading-error__try" (click)="tryLoadContent()">Попробовать снова</span>
+        </div>
+    </div>
+
+    <div class="team-page__content" *ngIf="isLoaded && !loading">
+        <div class="team-page__info"><span>Alty</span> {{users.length}} человек</div>
+
+        <div class="team-page__list">
+
+            <div *ngFor="let user of users; let i = index"
+                 class="user-preview"
+                 [class.top-rate]="i === 0 && user.activityScore > 0"
+                 (click)="showUser(user)">
+                <div class="user-preview__left">
+                    <div class="ava"
+                         [style.background-image]="'url(' + user.avatarURL + ')'">
+                    </div>
+                    <div class="user-preview__emoji"><i class="tp-icon">{{user.emoji}}</i></div>
+                </div>
+                <div class="user-preview__right">
+                    <div class="user-preview__head">
+                        <h2 class="user-preview__title">{{user.firstName}} {{user.lastName}}</h2>
+                        <p class="user-preview__occupation">{{user.occupation}}</p>
+                    </div>
+                    <span class="user-preview__num-pokes">{{user.activityScore}}</span>
+                    <div class="user-preview__rating">
+                        <div class="rating">
+                            <div class="rating__count">{{user.rating}}</div>
+                            <div class="rating__wrap">
+                                <div class="rating__stars">
+                                    <div class="rating__stars-value" [style.width]="100*user.rating/5 + '%'"></div>
+                                </div>
+                                <div *ngIf="user.numPokes"
+                                     class="rating__info">{{user.numPokes}} {{user.numPokes > 1 ? 'pokes' : 'poke'}}</div>
+                                <div *ngIf="!user.numPokes" class="rating__info">нет pokes</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="user-preview__top-rate-icon">
+                    <span class="tp-icon">🏅</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</ion-content>
